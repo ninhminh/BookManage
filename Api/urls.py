@@ -1,6 +1,6 @@
 from django.urls import path 
 from .views import Token, AddCategory, AddBook, CategoryDetail, DeleteCategory, EditBook, DeleteBook, ListCategory, ListBook, BookDetail,ListUser,Signup
-from .views import Update, AddCart
+from .views import Update, AddCart,Order,Cart,ListRoleByUserLogin, Account, Password
 urlpatterns = [
     
     path('Login', Token.as_view()),
@@ -17,4 +17,9 @@ urlpatterns = [
     path('ListUser',ListUser.as_view()),
     path('Update',Update.as_view()),
     path('AddToCart/<int:id>',AddCart.as_view()),
+    path('Cart',Cart.as_view()),
+    path('Order',Order.as_view()),
+    path('ListRoleByUserLogin',ListRoleByUserLogin.as_view()),
+    path('Account',Account.as_view()),
+    path('Password',Password.as_view()),
 ]
