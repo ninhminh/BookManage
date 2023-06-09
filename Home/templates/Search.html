@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="/static/css/Shop.css">
+</head>
+<body>
+    <div id="header">
+        <div class="header__main">
+            <div class="header__logoshop">
+                <img src="/static/img/1.jpg" alt="">
+            </div>
+            <div class="header__navbar">
+                <ul id="role1">
+                    <a href="/Account">
+                        <li><i class="fas fa-user"></i> Đăng Kí</li>
+                    </a>
+                    <a href="/Cartment">
+                        <li><i class="fas fa-money-bill"></i> Thanh Toán</li>
+                    </a>
+                    <a href="/Cart">
+                        <li><i class="fas fa-cart-plus"></i> Giỏ Hàng</li>
+                    </a>
+                    <a href="/Login">
+                        <li><i class="fas fa-lock"></i> Đăng Nhập</li>
+                    </a>
+                </ul>
+            </div>
+            <div class="clear">
+            </div>
+            <div class="header__nav">
+                <div class="header__nav__option">
+                    <ul id="role">
+                        <a href="/Home">
+                            <li>Trang chủ</li>
+                        </a>
+                        <a href="/Shop">
+                            <li>Shop</li>
+                        </a>
+                        <a href="/Contact">
+                            <li>Liên Hệ</li>
+                        </a>
+                    </ul>
+                </div>
+                <div class="header__nav__search" >
+                    <div action="" onkeyup="search()">
+                        <input type="text" placeholder="Tìm Kiếm.." name="search" id="find" >
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+                    <div class="clear">
+                    </div>
+            </div>
+        </div>
+        <div class="header__footer">
+        </div>
+    </div>
+    <div id="container">
+        <div class="container__optionproduct">
+            <div class="container__optionby" id="productCategory">
+                <div class="container__optionby__title">
+                    <h1>Danh Mục</h1>
+                </div>
+                <ul>
+                   
+                    <button onclick="productByCategory(1)">
+                        <li>Hoa Sự Kiện</li>
+                    </button>
+                    <div onclick="productByCategory(2)">
+                        <li>Hoa Tình Yêu</li>
+                    </div>
+                    <div onclick="productByCategory(3)">
+                        <li>Hoa Chia Buồn</li>
+                    </div>
+                    <div onclick="productByCategory(4)">
+                        <li>Hoa Tặng quà</li>
+                    </div>
+                    <div onclick="productByCategory(5)">
+                        <li>Bó</li>
+                    </div>
+                    <div onclick="productByCategory(7)">
+                        <li>Lãng</li>
+                    </div>
+                    <div onclick="productByCategory(6)">
+                        <li>Giỏ</li>
+                    </div>
+                    <div onclick="productByCategory(8)">
+                        <li>Bình</li>
+                    </div>
+  
+                </ul>
+            </div>
+            
+        </div>
+        <div class="container__listproduct" id="update" >
+            <div class="container__listproduct__product">
+                <div class="product__img">
+                    <a href="/html/DetailProduct/">
+
+                        <img src="" alt="">
+                    </a>
+                </div>
+                <div class="product__inforproduct">
+                    <h1>  </h1>
+                    <p>   </p>
+                    <div class="addtocart"><a href="/Cart"> <i class="fas fa-cart-plus"></i> Thêm vào giỏi hàng
+                    </a></div>
+                </div>
+            </div>
+            <div class="container__listproduct__product">
+                <div class="product__img">
+                    <a href="">
+
+                        <img src="" alt="">
+                    </a>
+                </div>
+                <div class="product__inforproduct">
+                    <h1>   </h1>
+                    <p>    </p>
+                    <div class="addtocart"><a href="/Cart"> <i class="fas fa-cart-plus"></i> Thêm vào giỏi hàng
+                    </a></div>
+                </div>
+            </div>
+            <div class="container__listproduct__product">
+                <div class="product__img">
+                    <a href="">
+
+                        <img src="" alt="">
+                    </a>
+                </div>
+                <div class="product__inforproduct">
+                    <h1>   </h1>
+                    <p>    </p>
+                    <div class="addtocart"><a href="/Cart"> <i class="fas fa-cart-plus"></i> Thêm vào giỏi hàng
+                    </a></div>
+                </div>
+            </div>
+            <div class="container__listproduct__product">
+                <div class="product__img">
+                    <a href="">
+                        <img src="" alt="">
+                    </a>
+                </div>
+                <div class="product__inforproduct">
+                    <h1>    </h1>
+                    <p>     </p>
+                    <div class="addtocart"><a href="/Cart"> <i class="fas fa-cart-plus"></i> Thêm vào giỏi hàng
+                    </a></div>
+                </div>
+            </div>
+            <div class="container__listproduct__product">
+                <div class="product__img">
+                    <a href="">
+
+                        <img src="" alt="">
+                    </div>
+                    </a>
+                <div class="product__inforproduct">
+                    <h1>   </h1>
+                    <p>    </p>
+                    <div class="addtocart"><a href="static/Cart"> <i class="fas fa-cart-plus"></i> Thêm vào giỏi hàng
+                    </a></div>
+                </div>
+            </div>
+            <div class="container__listproduct__product">
+                <div class="product__img">
+                    <a href="">
+
+                        <img src="" alt="">
+                    </div>
+                    </a>
+                <div class="product__inforproduct">
+                    <h1>   </h1>
+                    <p>    </p>
+                    <div class="addtocart"><a href="/Cartment"> <i class="fas fa-cart-plus"></i> Thêm vào giỏi hàng
+                    </a></div>
+                </div>
+            </div>
+        </div>
+    </div>    
+</body>
+<script src="/static/js/search.js"></script>
+<script src="/static/js/base.js"></script>
+<script src="/static/js/logout.js"></script>
+</html>

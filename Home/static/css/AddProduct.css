@@ -1,0 +1,393 @@
+.container__body {
+    background-color: #E8F5FF;
+    margin-top: 70px;
+    padding-top: 30px;
+}
+
+.container__body .container__body__content {
+    width: 96%;
+    margin: auto;
+    background-color: #FFFFFF;
+}
+
+.container__body__content .body__content__header {
+    padding: 20px;
+    border-bottom: 2px solid #E8F5FF;
+}
+
+.content__header__title h1 {
+    color: #141414;
+    font-size: 24px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    margin: 0px;
+    line-height: 1.5;
+}
+
+.container__body__content .body__content__Film {
+    padding: 20px;
+}
+
+.Film__infor .Film__infor__content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Film__infor__content .Film__input__Text {
+    width: 50%;
+}
+
+.content__Film__input {
+    margin: 0 10px 0 10px;
+}
+
+.content__Film__input label {
+    color: #141414;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.content__Film__input input {
+    margin-top: 10px;
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: #E8F5FF;
+    padding: 16px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #141414;
+    border-radius: 10px;
+}
+
+.content__Film__input select {
+    margin-top: 10px;
+    width: 100%;
+    background-color: #E8F5FF;
+    color: #141414;
+    padding: 16px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+}
+
+.content__Film__input .CategoryList {
+    margin-top: 10px;
+    width: 100%;
+    background-color: #E8F5FF;
+    color: #141414;
+    margin-bottom: 20px;
+    font-size: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    min-height: 50px;
+}
+
+.CategoryList .Category__select {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin: 5px;
+    color: #141414;
+    background-color: #FFFFFF;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.content__Film__input .ActorList {
+    margin-top: 10px;
+    width: 100%;
+    background-color: #E8F5FF;
+    color: #141414;
+    margin-bottom: 20px;
+    font-size: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    min-height: 50px;
+}
+
+.ActorList .Actor__select {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin: 5px;
+    color: #141414;
+    background-color: #FFFFFF;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.content__Film__input textarea {
+    margin-top: 10px;
+    width: 100%;
+    background-color: #E8F5FF;
+    color: #141414;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    height: 200px;
+}
+
+.Film__infor__content .Film__input__file {
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Film__input__file .input__file {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.input__file label {
+    color: #141414;
+    font-size: 20px;
+    margin-bottom: 10px;
+    position: relative;
+    top: -25px;
+}
+
+.input__file input::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.input__file .Change__inputFile {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 10px;
+    top: -28px;
+}
+
+.Change__inputFile img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    border: 1px solid #141414;
+    object-fit: contain;
+}
+
+.Change__inputFile video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    border: 1px solid #141414;
+}
+
+.Change__inputFile .pause-playVideo {
+    position: absolute;
+    right: 50%;
+    height: 20%;
+    top: 50%;
+    color: #141414;
+    z-index: 10;
+    font-size: 20px;
+}
+
+.pause-playVideo i {
+    cursor: pointer;
+    display: none;
+}
+
+.Change__inputFile:hover i {
+    display: block;
+}
+
+.input__file input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.input__file input::before {
+    content: ".";
+    display: inline-block;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+}
+
+.Film__infor #Chapter__infor {
+    display: none;
+}
+
+.content__Chapter__input label {
+    color: #141414;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.content__Chapter__input input {
+    margin-top: 10px;
+    width: 100%;
+    background-color: #E8F5FF;
+    color: #141414;
+    padding: 16px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+}
+
+.content__Chapter__input textarea {
+    margin-top: 10px;
+    width: 100%;
+    background-color: #E8F5FF;
+    color: #141414;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    height: 200px;
+}
+
+.body__content__Film .Save__Change {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.Save__Change #save__button {
+    color: #FFFFFF;
+    font-size: 16px;
+    background-color: #34c759;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    border-radius: 60px;
+    width: 100px;
+    cursor: pointer;
+}
+
+.container__body .ChapterByFilm {
+    border-top: 2px solid #141414;
+    padding: 20px;
+    width: 96%;
+    margin: auto;
+    margin-top: 40px;
+    background-color: #E8F5FF;
+}
+
+.ChapterByFilm .listChapter__header {
+    width: 96%;
+    margin: auto;
+    background-color: #E8F5FF;
+}
+
+.listChapter__header .listChapter__header__nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.listChapter__header__nav__Show p {
+    font-size: 20px;
+    color: #141414;
+    font-weight: 600;
+}
+
+.nav__search__Chapter label {
+    font-size: 20px;
+    margin-right: 20px;
+    color: #141414;
+}
+
+#search__Chapter {
+    background-color: #E8F5FF;
+    border: none;
+    padding: 10px;
+    border-radius: 4%;
+    color: #83878a;
+}
+
+#search__Chapter:focus {
+    outline: none;
+}
+
+.ChapterByFilm .listChapter__body {
+    padding-top: 20px;
+}
+
+.listChapter__body #table__Chapters {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead,
+tbody {
+    color: #83878a;
+    border: none;
+}
+
+th,
+tr,
+td {
+    text-align: center;
+    font-size: 20px;
+    font-size: 100;
+    border: none;
+    background-color: #E8F5FF;
+    line-height: 50px;
+}
+
+tr {
+    border-bottom: 10px solid #141414;
+    font-size: 18px;
+}
+
+td {
+    color: #141414;
+    font-size: 16px;
+}
+
+td .action__Chapter {
+    display: flex;
+    text-overflow: ellipsis;
+    justify-content: space-around;
+}
+
+.action__Chapter .action__Chapter__Edit {
+    cursor: pointer;
+    color: green;
+}
+
+.action__Chapter .action__Chapter__Delete {
+    cursor: pointer;
+    color: red;
+}
+
+.ChapterByFilm .listChapter__footer {
+    margin-top: 20px;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    color: #141414;
+}
+
+.listChapter__footer .listChapter__footer__indexPage {
+    display: flex;
+}
+
+.listChapter__footer__indexPage p {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.addbook__flex {
+    display: flex;
+}

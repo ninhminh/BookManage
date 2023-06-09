@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="static/css/ListCatalog.css">
+</head>
+<body>
+    <div id="header">
+        <div class="header__Content">
+            <h1>Trang Admin</h1>
+        </div>
+        <div class="header__navbar">
+            <ul >
+                <li><i class="fas fa-envelope"></i></li>
+                <li><i class="fas fa-bars"></i></li>
+                <li><i class="fas fa-bell"></i></li>
+                <li><i class="fas fa-user"></i></li>
+            </ul>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div id="container">
+        <div class="container__navbar">
+            <div class="container__navbar__user">
+                <div class="container__navbar__user__img">
+                    <a href="/Home"> <img src="static/img/logoandbanner/logo.jpg" alt=""> </a>
+                </div>
+                <div class="container__navbar__user__infor">
+                   <h1>Admin</h1>
+                   <h2>Online</h2>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+            <div class="container__navbar__search">
+                <form action="">
+                    <input type="text" placeholder="Tìm Kiếm.." name="search" id="find" onkeyup="search()">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+            <div class="container__navbar__optionlist">
+                <ul>
+                    <a href="/ListProduct">
+                        <li><i class="fab fa-product-hunt"></i> Quản lí sản phẩm</li>
+                    </a>
+                    <a href="/ListUser">
+                        <li><i class="fas fa-user"></i> Quản lí người dùng</li>
+                    </a>
+                    <a href="/ListType" class="container__navbar__optionlist__selected">
+                        <li><i class="fas fa-chart-bar"></i> Quản lí thể loại</li>
+                    </a>
+                    <a href="/ListOrder" >
+                        <li><i class="fab fa-hotjar"></i> Quản lí đơn hàng</li>
+                    </a>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="container__content">
+            <div class="container__content__optiontitle">
+                <h1>Danh sách thể loại</h1>
+            </div>
+            <div class="container__content__optionbody">
+                <div class="container__content__optionbody__header">                 
+                </div>
+                <div class="container__content__optionbody__infortable">
+                    <div class="AddCategory">
+                        <div class="AddCategory__Add">
+                            <a href="/AddCategory" >Thêm Thể Loại</a>
+                        </div>
+                    </div>
+                    <div class="container__content__optionbody__infortable__search">
+                        <form action="">
+                            <label for="searchnameproduct">Tìm kiếm: </label>
+                            <input type="search" id="searchnameproduct">
+                        </form>
+                    </div>
+                    <div class="clear">
+                    </div>
+                </div>
+                <div class="container__content__optionbody__table" id = "categories">
+                    <table id="table__productlist">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Tên Thể loại</th>
+                                <th>Trạng thái Danh mục</th>
+                                <th>Tùy chọn</th>
+                            </tr>
+                        </thead>
+                        <tbody  id="add">
+                            <tr>
+                                <td>1</td>
+                                <td><a href="/html/ListProduct/ListProductByCatalog/ListProductByHoaSuKien.html">Tiểu thuyết</a></td>
+                                <td>1</td>
+                                <td class="setupproduct">
+                                    <div class="editproduct">
+                                        Sửa
+                                    </div>
+                                    <div class="deleteproduct">
+                                        Xóa
+                                    </div>
+                                    <div class="clear">
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+</body>
+<script src="/static/js/listcategory.js"></script>
+</html>

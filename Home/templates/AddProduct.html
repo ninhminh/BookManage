@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADDPROUCT</title>
+    <link rel="stylesheet" href="static/css/AddProduct.css">
+</head>
+<body>
+    <div class="container__body">   
+        <div class="container__body__content">
+            <div class="body__content__header">
+                <div class="content__header__title">
+                    <h1>Book</h1>
+                </div>
+            </div>
+            <div class="body__content__Film">
+                <div class="Film__infor">
+                    <div class="Film__infor__content"  id="add-product-form">
+                        <div class="Film__input__Text">
+                            <div className='addbook__flex'>
+                            <div class="content__Film__input">
+                                <label for="bookName">Tên sách</label>
+                                <input type="text"  id="bookName" />
+                            </div>
+                            <div class="content__Film__input">
+                                <label for="authorName">Tác giả</label>
+                                <input type="text"  id="authorName" />
+                            </div>
+                            </div>
+                            <div class="content__Film__input">
+                                <label for="Description">Mô tả</label>
+                                <textarea name="" id="Description" ></textarea>
+                            </div>
+                            <div className='addbook__flex'>
+                            <div class="content__Film__input">
+                                <label for="date">Ngày phát hành</label>
+                                <input type="date"  id="date" />
+                            </div>
+                            <div class="content__Film__input">
+                                <label for="pageNumber">Số trang</label>
+                                <input type="text"  id="pageNumber" />
+                            </div>
+                            </div>
+                            <div class="content__Film__input">
+                                <label for="bookPrice">Giá</label>
+                                <input type="text"  id="bookPrice" />
+                            </div>
+
+                            <div class="content__Film__input">
+                                <label for="Type">Category</label>
+                                <select id="Category">
+                                    
+                                  
+                                </select>
+                            </div>
+                           
+                          
+
+                        </div>
+                        <div class="Film__input__file">
+                            <div class="input__file">
+                                <label for="">Image</label>
+                                <div class="Change__inputFile">
+                                    <img  alt="" />
+                                    <input type="file"  class="input-file" accept="image/*" id="Image"/>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                   
+                </div>
+                <div class="Save__Change">
+                    <div id="save__button" onclick="postBook()">
+                        Save
+                    </div>
+                </div>
+            </div>
+
+        </div>
+       
+    </div>
+
+</body>
+<script src="static/js/addBook.js"></script>
+</html>

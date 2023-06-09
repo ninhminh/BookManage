@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="static/css/Product.css">
+</head>
+<body>
+    <div id="header">
+        <div class="header__Content">
+            <h1>Trang Admin</h1>
+        </div>
+        <div class="header__navbar">
+            <ul >
+                <li><i class="fas fa-envelope"></i></li>
+                <li><i class="fas fa-bars"></i></li>
+                <li><i class="fas fa-bell"></i></li>
+                <li><i class="fas fa-user"></i></li>
+            </ul>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div id="container">
+        <div class="container__navbar">
+            <div class="container__navbar__user">
+                <div class="container__navbar__user__img">
+                    <img src="static/img/logoandbanner/Logo.jpg" alt="">
+                </div>
+                <div class="container__navbar__user__infor">
+                   <h1>Admin</h1>
+                   <h2>Online</h2>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+            <div class="container__navbar__search">
+                <form action="">
+                    <input type="text" placeholder="Tìm Kiếm.." name="search" id="find" onkeyup="search()">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                  </form>
+            </div>
+            <div class="container__navbar__optionlist">
+                <ul>
+                    <a href="./ListProduct.html" class="container__navbar__optionlist__selected">
+                        <li><i class="fab fa-product-hunt"></i> Quản lí sản phẩm</li>
+                    </a>
+                    <a href="./ListUser.html">
+                        <li><i class="fas fa-user"></i> Quản lí người dùng</li>
+                    </a>
+                    <a href="./ListCatalog.html">
+                        <li><i class="fas fa-tags"></i> Quản lí danh mục</li>
+                    </a>
+                    <a href="./ListType.html">
+                        <li><i class="fas fa-chart-bar"></i> Quản lí thể loại</li>
+                    </a>
+                    <a href="./ListOrder.html">
+                        <li><i class="fab fa-hotjar"></i> Quản lí đơn hàng</li>
+                    </a>
+                    <a href="#">
+                        <li><i class="fas fa-home"></i> Thống kê</li>
+                    </a>
+                </ul>
+            </div>
+        </div>
+        <div class="container__content">
+            <div class="container__content__optiontitle">
+                <h1>Danh sách sản phẩm</h1>
+            </div>
+            <div class="container__content__optionbody">
+                <div class="container__content__optionbody__header">                 
+                </div>
+                <div class="container__content__optionbody__infortable">
+                    <div class="container__content__optionbody__infortable__quantily">
+                        <select id="quantily">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4" selected>4</option>
+                          </select>
+                    </div>
+                    <div class="container__content__optionbody__infortable__search">
+                        <form action="">
+                            <label for="searchnameproduct">Tìm kiếm: </label>
+                            <input type="search" id="searchnameproduct">
+                        </form>
+                    </div>
+                    <div class="clear">
+                    </div>
+                </div>
+                <div class="container__content__optionbody__table">                 
+                    <table id="table__productlist">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Tên</th>
+                                <th>Ảnh</th>
+                                <th>Trạng thái</th>
+                                <th>Giá</th>
+                                <th>Tùy chọn</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>An Khang</td>
+                                <td><img src="static/img/kieudang/hoachiabuon/an khang- 1700k.jpg" alt=""></td>
+                                <td>Đang bán</td>
+                                <td>600</td>
+                                <td class="setupproduct">
+                                    <div class="editproduct">
+                                        Sửa
+                                    </div>
+                                    <div class="deleteproduct">
+                                        Xóa
+                                    </div>
+                                    <div class="clear">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>An Nghỉ</td>
+                                <td><img src="static/img/kieudang/hoachiabuon/an nghỉ- 1760k.jpg" alt=""></td>
+                                <td>Đang bán</td>
+                                <td>300</td>
+                                <td class="setupproduct">
+                                    <div class="editproduct">
+                                        Sửa
+                                    </div>
+                                    <div class="deleteproduct">
+                                        Xóa
+                                    </div>
+                                    <div class="clear">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Lần Cuối</td>
+                                <td><img src="static/img/kieudang/hoachiabuon/lần cuối- 900k.jpg" alt=""></td>
+                                <td>Sinh nhật vui vẻ</td>
+                                <td>600</td>
+                                <td class="setupproduct">
+                                    <div class="editproduct">
+                                        Sửa
+                                    </div>
+                                    <div class="deleteproduct">
+                                        Xóa
+                                    </div>
+                                    <div class="clear">
+                                    </div>
+                                </td>
+                            </tr>       
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+</body>
+<script src="/static/js/base.js"></script>
+<script src="/static/js/logout.js"></script>
+</html>

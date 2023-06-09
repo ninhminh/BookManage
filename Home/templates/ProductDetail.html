@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="/static/css/ProductDetail.css">
+</head>
+<body>
+    <div id="header">
+        <div class="header__main">
+            <div class="header__logoshop">
+                <img src="/static/img/logoandbanner/logo.jpg" alt="">
+            </div>
+            <div class="header__navbar">
+                <ul id="role1">
+                    <a href="/Account">
+                        <li><i class="fas fa-user"></i> Đăng Kí</li>
+                    </a>
+                    <a href="/Cartment">
+                        <li><i class="fas fa-money-bill"></i> Thanh Toán</li>
+                    </a>
+                    <a href="/Cart">
+                        <li><i class="fas fa-cart-plus"></i> Giỏ Hàng</li>
+                    </a>
+                    <a href="/Login">
+                        <li><i class="fas fa-lock"></i> Đăng Nhập</li>
+                    </a>
+                </ul>
+            </div>
+            <div class="clear">
+            </div>
+            <div class="header__nav">
+                <div class="header__nav__option">
+                    <ul id="role">
+                        <a href="/Home">
+                            <li>Trang chủ</li>
+                        </a>
+                        <a href="/Shop">
+                            <li>Shop</li>
+                        </a>
+                        <a href="/Contact">
+                            <li>Liên Hệ</li>
+                        </a>
+                    </ul>
+                </div>
+                <div class="header__nav__search">
+                    <form action="">
+                        <input type="text" placeholder="Tìm Kiếm.." name="search" id="find" onkeyup="search()">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+        </div>
+        <div class="header__footer">
+        </div>
+    </div>
+    <div id="container">
+        
+        <div class="container__product" id="detail">
+            <div class="container__product__img">
+                <img src="" alt="">
+            </div>
+            <div class="container__product__main">
+                <div class="container__product__main__infor">
+                    <h1>Naruto</h1>
+                    <p>Mã Sản Phẩm: <span>92</span></p>
+                    <h2>100 000đ</h2>
+                </div>
+                <div class="container__product__main__buy">
+                    <div class="product__buy__quantily">
+                        <label for="">Số lượng: </label>
+                        <input type="text" name="" id="amount">
+                    </div>
+                    <div class="product__buy__button">
+                        <a href="/Cart"><i class="fas fa-cart-plus"></i> Thêm vào giỏ hàng</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="tour__reviews mt-4" id="comment">
+            <h4>Reviews</h4>
+        
+            <form>
+                <div class="rating__group">
+                    <span>
+                        1 <i class="fas fa-star rating__start"></i>
+                    </span>
+                    <span>
+                        2 <i class="fas fa-star rating__start"></i>
+                    </span>
+                    <span>
+                        3 <i class="fas fa-star rating__start"></i>
+                    </span>
+                    <span>
+                        4 <i class="fas fa-star rating__start"></i>
+                    </span>
+                    <span>
+                        5 <i class="fas fa-star rating__start"></i>
+                    </span>
+                </div>
+                <div class="review__input">
+                    <input type="text" placeholder="share your thoughts" required />
+                    <button class="primary__btn" type="submit">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        
+            <div class="user__reviews">
+                <div class="review__item">
+                    <img src="https://cdn.pixabay.com/photo/2013/07/12/15/52/chat-150496_960_720.png" alt="" />
+        
+                    <div class="w-100">
+                        <div class="review__item-user">
+                            <div>
+                                <h5>jisoo</h5>
+                                <p>
+                                    Ngày bình luận
+                                    <!-- new Date("01-18-2023").toLocaleDateString("en-US", options) -->
+                                </p>
+                            </div>
+                            <span class="d-flex align-items-center">
+                                5 <i class="fas fa-star"></i>
+                            </span>
+                        </div>
+                        <h6>Amazing tour</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>    
+</body>
+<script src="/static/js/bookDetail.js"></script>
+<script src="/static/js/logout.js"></script>
+</html>

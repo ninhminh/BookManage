@@ -1,0 +1,231 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+
+}
+.input{
+  border: 1px solid black;
+}
+.clear::after {  
+  content: "";  clear: both;  display: table;
+
+}
+#header{
+  height: 90px;
+  margin: auto;
+  width: 90%;
+  border-bottom: 1px solid #ccc;
+  margin-top:10px ;
+}
+#header .header__logoshop{
+  float: left;
+}
+.header__logoshop img{
+  height: 80px;
+  width: 80px;
+  object-fit: cover;
+}
+#header .header__navbar{
+  float:right;
+}
+.hide{
+  display: none;
+}
+.header__navbar ul{
+  list-style: none;
+}
+.header__navbar ul a{
+  text-decoration: none;
+  line-height: 90px;
+  margin-right: 20px;
+  font-size: 17px;
+  color: #ccc;
+}
+.header__navbar ul a li{
+    display: inline-block;
+}
+.header__navbar ul a li i{
+
+}
+
+#header .header__nav{
+  margin-top: 30px;
+}
+.header__nav .header__nav__option{
+  float: left;
+}
+.header__nav__option ul{
+
+}
+.header__nav__option ul a{
+  text-decoration: none;
+  font-size: 20px;
+  color: #ccc;
+  margin-right: 10px;
+}
+.header__nav__option ul a li{
+  display: inline-block;
+}
+.header__nav .header__nav__search{
+  float: right;
+}
+.header__nav__search input{
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+.header__nav__search button{
+  border-radius: 4px;
+  padding: 6px;
+  cursor: pointer;
+  border: none;
+}
+#container{
+  
+  margin: auto;
+  margin-top: 90px;   
+  width: 60%;
+}
+#container .container__tablepay{
+  
+
+}
+.container__tablepay table{
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+table thead{
+  background-color: #FFCC99;
+}
+.container__tablepay thead tr th{
+  padding: 10px;
+}
+
+.container__tablepay table, .container__tablepay td, .container__tablepay th {
+  border: 1px solid #ccc;
+}
+tbody tr:nth-child(2n+1)>td{
+  background-color: #EEEEEE;
+}
+table img{
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+}
+.setupproduct{
+  width: 30%;
+  margin: auto;
+  cursor: pointer;
+}
+.container__tablepay td .editproduct{
+  background-color:#66CCFF;
+  display: inline-block;
+  min-width: 50px;
+  min-height: 30px;
+  line-height: 30px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+.container__tablepay td .deleteproduct{
+  background-color:#FF3333;
+  display: inline-block;
+  min-width: 50px;
+  min-height: 30px;
+  line-height: 30px;
+  border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.container__tablepay td .dowloadproduct{
+  background-color:#00CC00;
+  display: inline-block;
+  min-width: 70px;
+  min-height: 30px;
+  line-height: 30px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#container .container__optionpay{
+  margin-top: 40px;
+}
+.container__optionpay .container__optionpay__inforsale{
+  width: 100%;
+  padding: 20px;
+  min-height: 320px;
+}
+.container__optionpay__inforsale .optionpay__inforsale__code{
+  
+}
+.optionpay__inforsale__code .optionpay__inforsale__input{
+  margin-bottom: 10px;
+  border: 1px solid black;
+}
+.optionpay__inforsale__code__input label{
+  margin-right: 40px;
+}
+.optionpay__inforsale__code__input select{
+  min-width:50%;
+  padding: 10px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+ 
+}
+.container__optionpay__inforsale .optionpay__inforsale__user{
+  margin-bottom: 20px;
+}
+.optionpay__inforsale__user input{
+  width: 30%;
+  padding: 5px;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+.container__optionpay__inforsale .optionpay__inforsale__button{
+
+}
+.optionpay__inforsale__button input{
+  width: 100%;
+  margin: auto;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: orange;
+  cursor: pointer;
+  border: none;
+}
+.container__optionpay__inforpay{
+  float: right;
+  width: 45%;
+  background: #ccc;
+  padding: 20px;
+  min-height: 320px;
+}
+.container__optionpay__inforpay .container__optionpay__inforpay__text{
+
+}
+.container__optionpay__inforpay__text input{
+  width: 100%;
+  margin: auto;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-color: rgb(215 195 195 / 34%);
+}
+.container__optionpay__inforpay .container__optionpay__inforpay__button{
+
+}
+.container__optionpay__inforpay__button input{
+  width: 100%;
+  margin: auto;
+  display: inline-block;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: orange;
+  cursor: pointer;
+  border: none;
+  margin-bottom: 10px;
+}

@@ -1,0 +1,114 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+
+}
+.clear::after {  
+    content: "";  clear: both;  display: table;
+
+}
+#header{
+    height: 90px;
+    margin: auto;
+    width: 90%;
+    border-bottom: 1px solid #ccc;
+    margin-top:10px ;
+}
+#header .header__logoshop{
+    float: left;
+}
+.header__logoshop img{
+    height: 80px;
+    width: 80px;
+    object-fit: cover;
+}
+#header .header__navbar{
+    float:right;
+}
+.header__navbar ul{
+    list-style: none;
+}
+.header__navbar ul a{
+    text-decoration: none;
+    line-height: 90px;
+    margin-right: 20px;
+    font-size: 17px;
+    color: #ccc;
+}
+.header__navbar ul a li{
+    display: inline-block;
+}
+.header__navbar ul a li i{
+
+}
+
+#header .header__nav{
+    margin-top: 30px;
+}
+.header__nav .header__nav__option{
+    float: left;
+}
+.header__nav__option ul{
+
+}
+.header__nav__option ul a{
+    text-decoration: none;
+    font-size: 20px;
+    color: #ccc;
+    margin-right: 10px;
+}
+.header__nav__option ul a li{
+    display: inline-block;
+}
+.header__nav .header__nav__search{
+    float: right;
+}
+.header__nav__search input{
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+.header__nav__search button{
+    border-radius: 4px;
+    padding: 6px;
+    cursor: pointer;
+    border: none;
+}
+#container{
+    margin: auto;
+    width: 90%;
+    margin-top: 80px;
+    text-align: center;
+}
+#container .Signup__User{
+   
+}
+.Signup__User .Signup__User__title{
+
+}
+.Signup__User .Signup__User__form{
+    margin-top: 20px;
+}
+.Signup__User .Signup__User__form input{
+    min-width: 60%;
+    background-color: #ccc;
+    padding: 15px;
+    border: none;
+    margin-bottom: 10px;
+    border-radius:5px ;
+}
+.Signup__User .Signup__User__button{
+
+}
+.Signup__User__button input{
+    min-width: 60%;
+    background-color: orange;
+    padding: 15px;
+    border: none;
+    margin-bottom: 10px;
+    border-radius:5px ;
+    cursor: pointer;
+}
