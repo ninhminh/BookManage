@@ -8,7 +8,7 @@ function old(){
         if(xhttp.status=200){
             
             var s1 = document.getElementById('me');
-            console.log(Response.Password)
+           // console.log(Response.Password)
             var s ='<h1>Đổi mật khẩu</h1><div id="Error"><p></p></div><form ><label for="name">Mật khẩu cũ:</label><input type="password" id="oldpass" name="" required value="'+ Response.Password +'"><label for="email">Nhập lại mật khẩu cũ:</label>	<input type="password" id="pass1" name="email" required value=""><label for="phone">Mật khẩu mới:</label><input type="password" id="newpass" name="phone" required value=""><label for="phone">Nhập lại mật khẩu mới:</label><input type="password" id="pass2" name="phone" required value=""><input type="submit"  value="Lưu thông tin" onclick="Pass()"> '
             s1.innerHTML = s
         }else{

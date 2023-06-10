@@ -5,6 +5,8 @@ from rest_framework.response import Response
 from Entity.models.User import User
 from  core.settings import BASE_DIR, MEDIA_ROOT, SECRET_KEY
 import jwt
+import json
+from django.db.models import Q,F, Count
 
 from PIL import Image
 from django.conf import settings
@@ -15,15 +17,18 @@ from Entity.models.Role import Role
 from Entity.models.UserRole import UserRole
 from Entity.models.Category import Category
 from Entity.models.Book import Book
-from Entity.models.Bought import Bought
-from Entity.models.Bill import Bill
+from Entity.models.Order import Order
+from Entity.models.Comment import Comment
+from Entity.models.Rate import Rate
+
 from core.roleLoginDecorater import RoleRequest
 from django.utils.decorators import method_decorator
 from Entity.serializers.CategorySerializer import CategorySerializer
 from Entity.serializers.BookSerializer import BookSerializer
 from Entity.serializers.UserSerializer import UserSerializer
 from Entity.serializers.UserRoleSerializer import UserRoleSerializer
-from Entity.serializers.BoughtSerializer import BoughtSerializer
+from Entity.serializers.OrderSerializer import OrderSerializer
+
 class Token(APIView):
     def post(self,request):
         exp=datetime.now(tz=timezone.utc) + timedelta(minutes=50)
@@ -203,52 +208,6 @@ class Update(APIView):
         serializer = BookSerializer(books, many=True)  # Chuyển đổi danh sách đối tượng Book thành JSON
 
         return Response(serializer.data, status=200)
-class AddCart(APIView):
-    def post(self,request,id):
-        if not request.userID:
-            return Response({"message": "Bạn chưa đăng nhập"}, status=401)
-      
-        userid = request.userID
-        quantity = request.data['Quantity']
-        book = Book.objects.get(pk=id)
-        user = User.objects.get(pk=userid)
-        boughted=Bought.objects.filter(Book=book,User=user,StatusBuy='InOrder')
-        if(len(boughted)!=0):
-            boughted[0].Quantity+=int(quantity)
-            boughted[0].save()
-        else:
-            bought = Bought(Book=book,Quantity=quantity,User=user,StatusBuy='InOrder')
-            bought.save()
-        return Response({"message": "Đã thêm vào giỏ hàng"}, status=201)
-    def patch(self,request,id):
-        userid = request.userID
-        quantity = request.data['Quantity']
-        book = Book.objects.get(pk=id)
-        user = User.objects.get(pk=userid)
-        boughted=Bought.objects.filter(Book=book,User=user,StatusBuy='InOrder')
-        if(len(boughted)!=0):
-            boughted[0].Quantity=int(quantity)
-            boughted[0].save()
-            return Response({"message": "Thành công"}, status=200)
-        else:
-            return Response({"message": "Hàng không trong giỏ hàng"}, status=400)
-class Cart(APIView):
-    def get(self,request):
-        book = Bought.objects.filter(StatusBuy='InOrder')
-        serializer = BoughtSerializer(book, many=True)
-        return Response(serializer.data, status=200)
-class Order(APIView):
-    def post(self,request):
-        print(request.data)
-        newBill= Bill(StatusBill='Đang Giao Hàng',DeliveryTime=datetime.now(),DeliveryDestination=datetime.now()+timedelta(days=2),Address=request.data['Address'],PhoneNumber=request.data['Phone'])
-        newBill.save()
-        for productid in request.data['productList']:
-            product= Bought.objects.get(pk=productid['id'])
-            product.Bill=newBill
-            product.StatusBuy='InBill'
-            product.Quantity=0
-            product.save()
-        return Response({"message": "Thành Công"}, status=201)
 class ListRoleByUserLogin(APIView):
     @method_decorator(RoleRequest(allowedRoles=['Admin','User']))
     def get(self, request):
@@ -281,64 +240,164 @@ class Password(APIView):
         user.Password = password
         user.save()
         return Response({"message": "đã sửa mật khẩu"}, status=200)
-# class OrderProduct(APIView):
-#     def get(self,request):
+class AddCart(APIView):
+    def post(self,request,id):
+        userid = request.userID
+        amount = request.data['Amount']
+        book = Book.objects.get(pk=id)
+        user = User.objects.get(pk=userid)
+        print(userid,amount,id)
+        if not userid:
+            return Response({"message": "Bạn chưa đăng nhập"}, status=401)
+        try:
+            order = Order.objects.get(User_id=user.pk, Book_id=book.pk, Status = "Giỏ Hàng")
+            order.Amount += int(amount)
+            order.save()
+        except:
+            order = Order(User=user, Book=book,Amount=amount,Date= datetime.now(), Status = "Giỏ Hàng")
+            print(order)
+            print("thao")
+            order.save()
+        return Response({"message": "Đã thêm vào giỏ hàng"}, status=200)  
+class Cart(APIView):
+    def get(self, request):
+        userid = request.userID
+        user = User.objects.get(pk=userid)
+        orders = Order.objects.all()
+        print("CartGet")
+        cartList = []
+        for order in orders:
+            if order.User == user and order.Status == "Giỏ Hàng":
+                cartList.append({"id" : order.pk, "BookID": order.Book.pk,  "BookName":order.Book.BookName, "Author":order.Book.Author, "Price":order.Book.Price, "Category":order.Book.Category.CategoryName, "Status":order.Status, "Amount":order.Amount})
+        return Response(cartList, status=200)  
+class OrderProduct(APIView):
+    def get(self,request):
         
-#         userid = request.userID
-#         user = User.objects.get(pk=userid)
-#         orders = Bill.objects.all()
-#         # Lọc các đơn hàng của user có status là 1
-#         user_orders = [bill for bill in orders if bill.User == user and (bill.Status == "Chờ Xác Nhận" or bill.Status == "Đang gia hàng")]
+        userid = request.userID
+        user = User.objects.get(pk=userid)
+        orders = Order.objects.all()
+        # Lọc các đơn hàng của user có status là 1
+        user_orders = [order for order in orders if order.User == user and (order.Status == "Chờ Xác Nhận" or order.Status == "Đã Xác Nhận")]
 
-#         # Sắp xếp theo ngày đặt hàng (ngày gần nhất đến xa nhất)
-#         sorted_orders = sorted(user_orders, key=lambda x: x.Date, reverse=True)
+        # Sắp xếp theo ngày đặt hàng (ngày gần nhất đến xa nhất)
+        sorted_orders = sorted(user_orders, key=lambda x: x.Date, reverse=True)
 
-#         # Tạo danh sách đơn hàng đã sắp xếp để trả về
-#         cartList = []
-#         for order in sorted_orders:
-#             cartList.append({
-#                 "id": order.pk,
-#                 "ProductId": order.Product.pk,
-#                 "ProductName": order.Product.ProductName,
-#                 'img': order.Product.Imgage,
-#                 "ProductCode": order.Product.ProductCode,
-#                 "Price": order.Product.Price,
-#                 "Quatily": order.Product.Quatily,
-#                 "Date" : order.Date,
-#                 "Status": order.Status,
-#                 "Amount": order.Amount
-#             })
+        # Tạo danh sách đơn hàng đã sắp xếp để trả về
+        cartList = []
+        for order in sorted_orders:
+            cartList.append({
+                "id": order.pk,
+                "BookID": order.Book.pk,
+                "BookName": order.Book.BookName,
+                'img': order.Book.BookImage,
+                "author": order.Book.Author,
+                "Price": order.Book.Price,
+                "category": order.Book.Category.CategoryName,
+                "Date" : order.Date,
+                "Status": order.Status,
+                "Amount": order.Amount
+            })
 
-#         # Trả về danh sách đã sắp xếp
-#         return Response(cartList, status=200)
-#     def post(self, request):
-#         userid = request.userID
-#         products = json.loads(request.body)['productList']
-#         user = User.objects.get(pk=userid)
-#         for product in products:
-#             product_id = product['product_id']
-#             amount = product['amount']
-#             phone = product['phone']
-#             print("phone=", phone)
-#             address = product['address']
-#             try:
-#                 order = Bill.objects.get(User=user, Book__pk=product_id, Status='Giỏ Hàng')
-#                 order.StatusBill = "Chờ Xác Nhận"
-#                 order.Amount = amount
-#                 order.PhoneNumber = phone
-#                 order.DeliveryTime=datetime.now()
-#                 order.Address = address
-#                 order.save()
-#             except:
-#                 try:
-#                     product_obj = Product.objects.get(pk=product_id)
-#                 except Product.DoesNotExist:
-#                     return Response("Sản phẩm không tồn tại", status=400)
-#                 order = Order(User=user, Product=product_obj, Amount=amount, Date=datetime.now(), Status='Chờ Xác Nhận', PhoneNumber = phone, Address = address)
-#                 order.save()
-#         return Response("Đặt hàng thành công", status=200)
+        # Trả về danh sách đã sắp xếp
+        return Response(cartList, status=200)
+    def post(self, request):
+        userid = request.userID
+        books = request.data['bookList']
     
-#     def delete(self, request, id):
-#         order = Order.objects.get(pk=id)
-#         order.delete()
-#         return Response({"message": "đã xóa"}, status=200)
+        user = User.objects.get(pk=userid)
+        for book in books:
+            book_id = book['book_id']
+            amount = book['amount']
+            phone = book['phone']
+            print("phone=", phone)
+            address = book['address']
+            try:
+                order = Order.objects.get(User=user, Book__pk=book_id, Status='Giỏ Hàng')
+                order.Status = "Chờ Xác Nhận"
+                order.Amount = amount
+                order.PhoneNumber = phone
+                order.Date=datetime.now()
+                order.Address = address
+                order.save()
+            except:
+                try:
+                    book_obj = Book.objects.get(pk=book_id)
+                except Book.DoesNotExist:
+                    return Response("Sản phẩm không tồn tại", status=400)
+                order = Order(User=user, Book=book_obj, Amount=amount, Date=datetime.now(), Status='Chờ Xác Nhận', PhoneNumber = phone, Address = address)
+                order.save()
+        return Response("Đặt hàng thành công", status=200)
+    
+    def delete(self, request, id):
+        order = Order.objects.get(pk=id)
+        order.delete()
+        return Response({"message": "đã xóa"}, status=200)
+class Search(APIView):
+    def get(self, request , key):
+        bookQuery = Book.objects.filter(Q(BookName__icontains=key)|Q(Author__icontains=key))
+        book = []
+        for i in bookQuery:
+            book.append({"id":i.pk, "BookName": i.BookName, "Author": i.Author, "Price": i.Price, "PageNumber": i.PageNumber, "Imgage": i.BookImage, "Releasedate": i.Releasedate})
+        return Response(book, status=200)
+class ListOrder(APIView):
+    def get(self, request):
+        
+        orders = Order.objects.all()
+        order_list = []
+        for order in orders:
+            order_list.append({
+                "id": order.id,
+                "User": order.User.UserName,
+                "Book": order.Book.BookName,
+                "Date": order.Date,
+                "Status": order.Status,
+                "Amount": order.Amount,
+                "Address": order.Address,
+                "PhoneNumber": order.PhoneNumber,
+                "Price": order.Book.Price
+            })
+        return Response(order_list, status=200)
+class UpdateStatus(APIView):
+    def put(self, request, id):
+        
+        order = Order.objects.get(pk=id)
+            
+        order.Status = 'Đã Xác Nhận'  # Thay đổi trạng thái thành 3
+        order.save()
+        return Response({"message":"ok"},status=200)
+class DeleteOrder(APIView):
+    def delete(self, request, id):
+        order = Order.objects.get(pk=id)
+        order.delete()
+        return Response({"message": "đã xóa"}, status=200)
+class EditOrder(APIView):
+    def put(self, request, id):
+        order = Order.objects.get(pk=id)
+        Phone = request.data['Phone']
+        Address = request.data['Address']
+        order.PhoneNumber = Phone
+        order.Address = Address
+        order.save()
+        return Response({"message": "đã sửa"}, status=200)
+class Comments(APIView):
+    def get(self, request, id):
+        comments = Comment.objects.filter(Book__pk=id)
+        commentList = []
+        for com in comments:
+            a=Rate.objects.filter(User = com.User, Book__pk=id)[0]
+            commentList.append({"name":com.User.UserName, "comment":com.Comment, "rate":a.Rate})
+        return Response(commentList, status=200)
+class PostRatingAndComment(APIView):
+    def post(self,request,id):
+        user = User.objects.get(pk=request.userID)
+        order= Order.objects.filter(User=user,Status='Đã nhận được hàng')
+        if len(order)==0:
+            return Response({"massage":"Bạn chưa mua sản phẩm"},status=400)
+        rate = request.data['Rate']
+        comment = request.data['Comment']
+        book =Book.objects.get(pk=id)
+        newRate = Rate(Book=book,User=user,Rate=rate)
+        newComment = Comment(Comment=comment,User=user,Book=book)
+        newRate.save()
+        newComment.save()
+        return Response({"message":"thành công"},status=201)

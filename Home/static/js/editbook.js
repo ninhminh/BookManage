@@ -56,6 +56,27 @@ function getAllCategory(){
     xhttp.setRequestHeader("Authorization", "Bearer " + jwtToken)
     xhttp.send();
 }
+function getComments(id) {
+    var url = "/Aoiv1/Comments/" + id;
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", url);
+    var jwtToken = localStorage.getItem("token");
+    xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            var comments = JSON.parse(xhr.responseText);
+            // Sử dụng danh sách comment để hiển thị hoặc thực hiện các thao tác khác
+            console.log(comments);
+        } else {
+            alert("Error: " + xhr.statusText);
+        }
+    };
+    xhr.onerror = function () {
+        alert("Network error");
+    };
+    xhr.send();
+}
 
 function EditProduct()
 {

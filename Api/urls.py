@@ -1,6 +1,6 @@
 from django.urls import path 
 from .views import Token, AddCategory, AddBook, CategoryDetail, DeleteCategory, EditBook, DeleteBook, ListCategory, ListBook, BookDetail,ListUser,Signup
-from .views import Update, AddCart,Order,Cart,ListRoleByUserLogin, Account, Password
+from .views import Update,ListRoleByUserLogin, Account, Password, Cart, AddCart, OrderProduct, Search, ListOrder, UpdateStatus, DeleteOrder, EditOrder, Comments, PostRatingAndComment
 urlpatterns = [
     
     path('Login', Token.as_view()),
@@ -16,10 +16,19 @@ urlpatterns = [
     path('BookDetail/<int:id>', BookDetail.as_view()),
     path('ListUser',ListUser.as_view()),
     path('Update',Update.as_view()),
-    path('AddToCart/<int:id>',AddCart.as_view()),
-    path('Cart',Cart.as_view()),
-    path('Order',Order.as_view()),
+    path('Cart', Cart.as_view()),
+    path('AddCart/<int:id>', AddCart.as_view()),
+    path('Order', OrderProduct.as_view()),
+    path('Order/<int:id>', OrderProduct.as_view()),
     path('ListRoleByUserLogin',ListRoleByUserLogin.as_view()),
     path('Account',Account.as_view()),
     path('Password',Password.as_view()),
+    path('Search/<str:key>', Search.as_view()),
+    path('ListOrder',ListOrder.as_view()),
+    path('UpdateStatus/<int:id>', UpdateStatus.as_view()),
+    path('DeleteOrder/<int:id>', DeleteOrder.as_view()),
+    path('EditOrder/<int:id>', EditOrder.as_view()),
+    path('Comments/<int:id>', Comments.as_view()),
+    path('PostComment/<int:id>', PostRatingAndComment.as_view()),
+
 ]

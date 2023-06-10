@@ -12,7 +12,8 @@ const xhttp = new XMLHttpRequest();
             var s1 = document.getElementById('update');
             var s1Html='';
             for (var i=0;i<Response.length;i++){
-                s1Html+= '<div class="container__listproduct__product"><div class="product__img"><a href="/html/DetailProduct/'+ Response[i].id +'"><img src="'+ Response[i].Imgage +'" alt=""></a></div><div class="product__inforproduct"><h1>'+ Response[i].ProductName +'  </h1><p> '+ Response[i].Price +'  </p><div class="addtocart"><a href="/Pay"> <i class="fas fa-cart-plus"></i> Thêm vào giỏi hàng </a></div> </div> </div>'
+                console.log(1)
+                s1Html+= '<div class="container__listproduct__product"><div class="product__img"><a href="/html/DetailProduct/'+ Response[i].id +'"><img src="'+ Response[i].Imgage +'" alt=""></a></div><div class="product__inforproduct"><h1>'+ Response[i].BookName +'  </h1><p> '+ Response[i].Price +'  </p><div class="addtocart"><a href="/Pay"> <i class="fas fa-cart-plus"></i> Thêm vào giỏi hàng </a></div> </div> </div>'
              }
             s1.innerHTML = s1Html;
         }

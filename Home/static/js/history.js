@@ -1,7 +1,7 @@
 history()
 function history() {
     const xhttp = new XMLHttpRequest();
-    var userID = localStorage.getItem('userID');
+    
     xhttp.onload = function () {
         var ResponseJson = xhttp.responseText
         var Response = JSON.parse(ResponseJson)
@@ -14,8 +14,8 @@ function history() {
 
                 serverListHTML += '<tr><th>' + (i + 1) + '</th>'
                 serverListHTML += '<th><img src="' + Response[i].img + '" alt=""></th>'
-                serverListHTML += '<th hidden id="product_id">' + Response[i].ProductId + '</th>'
-                serverListHTML += '<th>' + Response[i].ProductName + '</th>'
+                serverListHTML += '<th hidden id="product_id">' + Response[i].BookID + '</th>'
+                serverListHTML += '<th>' + Response[i].BookName + '</th>'
                 serverListHTML += '<th>' + (Response[i].Amount * Response[i].Price) + '</th>'
                 var originalDateTime = Response[i].Date
                 var dateObject = new Date(originalDateTime);
@@ -51,7 +51,9 @@ function history() {
     }
     xhttp.open("GET", "/Apiv1/Order", false);
     xhttp.setRequestHeader("Content-type", "application/json")
-    xhttp.setRequestHeader("userID", userID);
+    var jwtToken = localStorage.getItem("token")
+    //định dạ   ng gửi đi787
+    xhttp.setRequestHeader("Authorization", "Bearer " + jwtToken)
     xhttp.send();
 }
 
